@@ -1,4 +1,4 @@
-import { ITestimonial } from "../types/testimonial";
+import { ITestimonial } from "../../types/testimonial";
 
 export function Testimonial({
   author,
@@ -7,11 +7,11 @@ export function Testimonial({
   testimonial,
 }: ITestimonial) {
   return (
-    <div className="testimonials-item">
-      <p>{testimonial}</p>
-      <div className="testimonials-author">
+    <div className="bg-white p-5">
+      <p className="text-[18px]">{testimonial}</p>
+      <div className="flex justify-start gap-7 mb-7">
         <div className="image">
-          <img src={image} />
+          <img className="max-w-[70px]" src={image} />
         </div>
         <div className="bio">
           <h3>{author}</h3>
