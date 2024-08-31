@@ -1,18 +1,12 @@
-import { useEffect, useState } from "react";
 import checkIcon from "../../assets/images/icons/check.svg";
 import userIcon from "../../assets/images/icons/user.svg";
 import trophyIcon from "../../assets/images/icons/trophy.svg";
-import { Teammate } from "./Teammate";
 import { ITeammate } from "../../types/teammate";
+import "latamcomponents/latam-team";
+import { useFetch } from "../../hooks";
 
 export function Team() {
-  const [teammates, setTeammates] = useState([]);
-
-  useEffect(() => {
-    fetch("http://localhost:3000/team")
-      .then((res) => res.json())
-      .then((data) => setTeammates(data));
-  }, []);
+  const { data } = useFetch("team");
 
   return (
     <section className="bg-gray pt-12 px-0 pb-24">
@@ -48,8 +42,8 @@ export function Team() {
           </div>
         </div>
         <div className="grid gap-5 grid-cols-1 col-span-full md:grid-cols-2 lg:grid-cols-4">
-          {teammates.map((item: ITeammate) => (
-            <Teammate key={item.id} {...item} />
+          {data.map((item: ITeammate) => (
+            <latam-team key={item.id} {...item} />
           ))}
         </div>
       </div>

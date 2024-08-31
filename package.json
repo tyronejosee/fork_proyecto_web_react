@@ -11,7 +11,7 @@
     "nuke": "rimraf node_modules rimraf package-lock.json"
   },
   "dependencies": {
-    "latamcomponents": "^0.0.26",
+    "latamcomponents": "^0.0.31",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

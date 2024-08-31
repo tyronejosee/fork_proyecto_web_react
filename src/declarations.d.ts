@@ -6,5 +6,8 @@ declare namespace JSX {
     "latam-faq": any;
     "latam-testimonial": any;
     "latam-service": any;
+    "latam-project": any;
+    "latam-team": any;
+    "latam-strategy-card": any;
   }
 }

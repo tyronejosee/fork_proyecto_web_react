@@ -13,7 +13,7 @@ export function Hero() {
             We are an award winning design agency that strongly believes in the
             power of creative ideas.
           </p>
-          <latam-button label="Get started" href="/get-started"></latam-button>
+          <latam-button label="Get started" href="/get-started" />
         </div>
         <div className="right">
           <img src={heroImage} alt="Hero image" />

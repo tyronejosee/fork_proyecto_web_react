@@ -1,16 +1,10 @@
-import { useEffect, useState } from "react";
 import { IFaq } from "../../types/faq";
 import "latamcomponents/latam-button";
 import "latamcomponents/latam-faq";
+import { useFetch } from "../../hooks";
 
 export function FAQs() {
-  const [faqs, setFAQs] = useState([]);
-
-  useEffect(() => {
-    fetch("http://localhost:3000/faqs")
-      .then((res) => res.json())
-      .then((data) => setFAQs(data));
-  }, []);
+  const { data } = useFetch("faqs");
 
   return (
     <section className="bg-gray pt-12 px-0 pb-24">
@@ -25,12 +19,12 @@ export function FAQs() {
             eget lacinia odio sem nec elit. Nullam quis risus eget urna mollis
             ornare.
           </p>
-          <latam-button label="All FAQs" href="/faqs"></latam-button>
+          <latam-button label="All FAQs" href="/faqs" />
         </div>
         <div className="right">
           <div className="flex flex-col gap-5">
-            {faqs.map((item: IFaq) => (
-              <latam-faq key={item.id} {...item}></latam-faq>
+            {data.map((item: IFaq) => (
+              <latam-faq key={item.id} {...item} />
             ))}
           </div>
         </div>

@@ -1,16 +1,10 @@
-import { useEffect, useState } from "react";
-import { StrategyCard } from "./StrategyCard";
 import { IStrategyCard } from "../../types/strategyCard";
 import "latamcomponents/latam-button";
+import "latamcomponents/latam-strategy-card";
+import { useFetch } from "../../hooks";
 
 export function Strategy() {
-  const [strategyCards, setStrategyCards] = useState([]);
-
-  useEffect(() => {
-    fetch("http://localhost:3000/strategyCards")
-      .then((res) => res.json())
-      .then((data) => setStrategyCards(data));
-  }, []);
+  const { data } = useFetch("strategy-cards");
 
   return (
     <section className="bg-gray pt-12 px-0 pb-24">
@@ -30,12 +24,12 @@ export function Strategy() {
             ligula porta felis euismod semper. Aenean lacinia bibendum nulla sed
             consectetur.
           </p>
-          <latam-button label="Learn more" href="/strategy"></latam-button>
+          <latam-button label="Learn more" href="/strategy" />
         </div>
         <div className="right">
           <div className="flex flex-col gap-10">
-            {strategyCards.map((card: IStrategyCard) => (
-              <StrategyCard key={card.id} {...card} />
+            {data.map((card: IStrategyCard) => (
+              <latam-strategy-card key={card.id} order={card.id} {...card} />
             ))}
           </div>
         </div>

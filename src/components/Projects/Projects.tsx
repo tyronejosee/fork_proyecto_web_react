@@ -1,15 +1,9 @@
-import { useEffect, useState } from "react";
-import { Project } from "./Project";
 import { IProject } from "../../types/project";
+import "latamcomponents/latam-project";
+import { useFetch } from "../../hooks";
 
 export function Projects() {
-  const [projects, setProjects] = useState([]);
-
-  useEffect(() => {
-    fetch("http://localhost:3000/projects")
-      .then((res) => res.json())
-      .then((data) => setProjects(data));
-  }, []);
+  const { data } = useFetch("projects");
 
   return (
     <section className="pt-12 px-0 pb-24">
@@ -18,8 +12,8 @@ export function Projects() {
         design.
       </h2>
       <div className="container grid gap-8 grid-cols-1 md:grid-cols-2">
-        {projects.map((project: IProject) => (
-          <Project key={project.id} {...project} />
+        {data.map((project: IProject) => (
+          <latam-project key={project.id} {...project} />
         ))}
       </div>
     </section>

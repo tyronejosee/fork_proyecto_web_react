@@ -11,7 +11,7 @@ export function Footer() {
           custom-styles="justify-self-center"
           label="Try it for free"
           href="/try"
-        ></latam-button>
+        />
       </div>
     </footer>
   );
